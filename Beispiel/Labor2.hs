@@ -71,10 +71,10 @@ bonbon :: Integer -> Integer
 bonbon = bonbon' 10
   where
     bonbon' :: Integer -> Integer -> Integer
-    bonbon' priceOfNextBonbon money
-      | money < priceOfNextBonbon || priceOfNextBonbon > 100 = 0
+    bonbon' priceBonbon money
+      | money < priceBonbon || priceBonbon > 100 = 0
       | otherwise =
-        1 + bonbon' (priceOfNextBonbon + 10) (money - priceOfNextBonbon)
+        1 + bonbon' (priceBonbon + 10) (money - priceBonbon)
 
 -- bonbon' starts with the number of current bonbons of 0 and the money (the bonbons "are counted" )
 bonbon' :: Integer -> Integer
@@ -88,7 +88,7 @@ bonbon' = bonbon'' 0
 bonbon'' :: Integer -> Integer
 bonbon'' = bonbon3 10
   where
-    bonbon3 priceOfNextBonbon money
-      | money < priceOfNextBonbon = 0
+    bonbon3 priceBonbon money
+      | money < priceBonbon = 0
       | otherwise =
-        1 + bonbon3 ((priceOfNextBonbon `mod` 100) + 10) (money - priceOfNextBonbon)
+        1 + bonbon3 ((priceBonbon `mod` 100) + 10) (money - priceBonbon)
