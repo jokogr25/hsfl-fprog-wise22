@@ -18,13 +18,19 @@ da x mit einem String/Char-liste verglichen wird, muss der Eingabe-Parameter x a
 der Rückgabewert ist 0, also ist es möglich diesen als Int zu deklarieren
 -}
 g :: Fractional a => String -> a
-g x | x == "" = 0
+g x
+  | x == "" = 0
+  | otherwise = error "nein"
 
 g' :: Num a => String -> a
-g' x | x == "" = 0
+g' x
+  | x == "" = 0
+  | otherwise = error "nein"
 
 g'' :: String -> Int
-g'' x | x == "" = 0
+g'' x
+  | x == "" = 0
+  | otherwise = error "nein"
 
 {-
 Aufgabe 2
@@ -43,7 +49,7 @@ aufruf = func 3.5 2.0
 fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
-fib n = fib (n -1) + fib (n -2)
+fib n = fib (n - 1) + fib (n - 2)
 
 sum' :: Int -> Int -> Int
 sum' x y
