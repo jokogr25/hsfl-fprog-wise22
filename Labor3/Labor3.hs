@@ -11,14 +11,14 @@ listy = []
 
 -- Aufgabe 2
 unterListe :: Int -> Int -> [a] -> [a]
-unterListe n m l = takey (m - n + 1) (droppy (n -1) l)
+unterListe n m l = takey (m - n + 1) (droppy (n - 1) l)
 
 droppy :: Int -> [a] -> [a]
 droppy _ [] = []
 droppy 0 l = l
 droppy n l
   | n >= lenghty l = []
-droppy n (x : xs) = droppy (n -1) xs
+droppy n (x : xs) = droppy (n - 1) xs
 
 takey :: Int -> [a] -> [a]
 takey _ [] = []
