@@ -1,7 +1,5 @@
 module Labor3.Labor3 where
 
-import Distribution.Simple.Utils (xargs)
-
 -- Aufgabe 1
 -- der Typ des Tupels ist: Fractional, Char
 f1 :: Fractional a => [(a, Char)]
