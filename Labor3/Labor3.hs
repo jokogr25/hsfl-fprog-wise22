@@ -6,7 +6,7 @@ f1 :: Fractional a => [(a, Char)]
 f1 = [(1.3, 'a')]
 
 -- der Typ ist: a -> [b]
-f2 :: a -> [ab]
+f2 :: a -> [b]
 f2 _ = []
 
 -- f3 :: [Int] -> Int -> [Int]
