@@ -1,8 +1,23 @@
 module Labor3.Labor3 where
 
+import Distribution.Simple.Utils (xargs)
+
 -- Aufgabe 1
--- hat keinen Typ, da Liste von verschiedenen Typen nicht möglich ist
--- [1.3, 'a']
+-- der Typ des Tupels ist: Fractional, Char
+f1 :: Fractional a => [(a, Char)]
+f1 = [(1.3, 'a')]
+
+-- der Typ ist: a -> [b]
+f2 :: p -> [a]
+f2 _ = []
+
+f3 :: (Num a, Eq a) => [a] -> a -> [a]
+f3 x 0 = 0 : x
+f3 x 1 = x
+
+-- im zweiten pattern kommt zwei mal x vor, das ist nicht erlaubt
+-- f 0 x = x
+-- f x x = []
 
 -- es handelt sich um eine leere Liste. Der Typ kann sein [a]
 -- eine Beispielfunktion wäre:
@@ -11,7 +26,7 @@ listy = []
 
 -- Aufgabe 2
 unterListe :: Int -> Int -> [a] -> [a]
-unterListe n m l = takey (m - n + 1) (droppy (n - 1) l)
+unterListe n m l = droppy (n -1) (takey m l)
 
 droppy :: Int -> [a] -> [a]
 droppy _ [] = []

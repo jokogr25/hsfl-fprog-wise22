@@ -92,3 +92,27 @@ bonbon'' = bonbon3 10
       | money < priceBonbon = 0
       | otherwise =
         1 + bonbon3 ((priceBonbon `mod` 100) + 10) (money - priceBonbon)
+
+fac :: Integer -> Integer
+fac 0 = 1
+fac n = n * fac (n - 1)
+
+indexedMap :: (Integer -> a -> b) -> [a] -> [b]
+indexedMap = indexedMap' 0
+
+indexedMap' :: Integer -> (Integer -> a -> b) -> [a] -> [b]
+indexedMap' _ _ [] = []
+indexedMap' i f (x : xs) = f i x : indexedMap' (i + 1) f xs
+
+kombination :: Integer -> [(Integer, Integer, Integer)]
+kombination = kombination' 0
+
+kombination' :: Integer -> Integer -> [(Integer, Integer, Integer)]
+kombination' index padlockWheelCount
+  | index == (padlockWheelCount ^ 3) = []
+  | otherwise =
+    (index `div` (padlockWheelCount ^ 2), (index `div` padlockWheelCount) `mod` padlockWheelCount, index `mod` padlockWheelCount) : kombination' (index + 1) padlockWheelCount
+
+sumNoten :: [(String, Double)] -> Double
+sumNoten [] = 0
+sumNoten ((_, note) : xs) = note + sumNoten xs
