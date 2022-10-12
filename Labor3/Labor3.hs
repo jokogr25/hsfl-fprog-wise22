@@ -6,13 +6,16 @@ f1 :: Fractional a => [(a, Char)]
 f1 = [(1.3, 'a')]
 
 -- der Typ ist: a -> [b]
-f2 :: p -> [a]
+f2 :: a -> [ab]
 f2 _ = []
 
-f3 :: (Num a, Eq a) => [a] -> a -> [a]
+-- f3 :: [Int] -> Int -> [Int]
+f3 :: (Eq a, Num a) => [a] -> a -> [a]
 f3 x 0 = 0 : x
 f3 x 1 = x
+f3 _ _ = []
 
+-- Aufgabe 2
 -- im zweiten pattern kommt zwei mal x vor, das ist nicht erlaubt
 -- f 0 x = x
 -- f x x = []
@@ -22,7 +25,7 @@ f3 x 1 = x
 listy :: [a]
 listy = []
 
--- Aufgabe 2
+-- Aufgabe 3
 unterListe :: Int -> Int -> [a] -> [a]
 unterListe n m l = droppy (n -1) (takey m l)
 
@@ -44,6 +47,7 @@ lenghty :: [a] -> Int
 lenghty [] = 0
 lenghty (_ : xs) = 1 + lenghty xs
 
+-- Aufgabe 4
 fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
@@ -53,6 +57,7 @@ fibList :: Int -> [Int]
 fibList 0 = [0]
 fibList n = fibList (n - 1) ++ [fib n]
 
+-- Aufgabe 5
 listeZuPaar :: [(a, b)] -> ([a], [b])
 listeZuPaar l = (firsts l, seconds l)
 
