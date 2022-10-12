@@ -4,7 +4,7 @@ module Labor3.Labor3 where
 -- hat keinen Typ, da Liste von verschiedenen Typen nicht möglich ist
 -- [1.3, 'a']
 
--- es handelt sich um eine leere Liste. Der Typ ist [a]
+-- es handelt sich um eine leere Liste. Der Typ kann sein [a]
 -- eine Beispielfunktion wäre:
 listy :: [a]
 listy = []
