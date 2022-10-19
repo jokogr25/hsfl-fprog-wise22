@@ -44,16 +44,16 @@ f_rekGuard n
 
 f_iter :: Int -> Int
 f_iter =
-  let f_iter' akk 1 = akk
+  let f_iter' akk 0 = akk
       f_iter' akk n = f_iter' (akk + n ^ 2) (n - 1)
-   in f_iter' 1
+   in f_iter' 0
 
 f_iter' :: Int -> Int
 f_iter' =
   let f_iter'' akk m
-        | m == 1 = akk
+        | m == 0 = akk
         | otherwise = f_iter'' (akk + m ^ 2) (m - 1)
-   in f_iter'' 1
+   in f_iter'' 0
 
 fib 0 = 0
 fib 1 = 1
