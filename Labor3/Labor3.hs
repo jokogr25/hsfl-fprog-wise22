@@ -1,7 +1,9 @@
 module Labor3.Labor3 where
 
+import Distribution.Simple.Utils (xargs)
+
 -- Aufgabe 1
--- der Typ des Tupels ist: Fractional, Char
+-- Möglicher Typ des Tupels: Fractional, Char
 f1 :: Fractional a => [(a, Char)]
 f1 = [(1.3, 'a')]
 
@@ -10,10 +12,12 @@ f2 :: a -> [b]
 f2 _ = []
 
 -- f3 :: [Int] -> Int -> [Int]
+-- im ersten pattern wird eine Liste erzeugt, dadurch muss der Rückgabetyp [a] sein
 f3 :: (Eq a, Num a) => [a] -> a -> [a]
 f3 x 0 = 0 : x
 f3 x 1 = x
-f3 _ _ = []
+
+-- f3 _ _ = []
 
 -- Aufgabe 2
 -- im zweiten pattern kommt zwei mal x vor, das ist nicht erlaubt
@@ -71,6 +75,12 @@ listeZuPaar2'' :: [(a, b)] -> ([a], [b]) -> ([a], [b])
 listeZuPaar2'' [] pairOfLists = pairOfLists
 listeZuPaar2'' ((a, b) : xs) (as, bs) = listeZuPaar2'' xs (as ++ [a], bs ++ [b])
 
+listeZuPaar3 :: [(a, b)] -> ([a], [b])
+listeZuPaar3 [] = ([], [])
+listeZuPaar3 ((a, b) : xs) = (a : fst rest, b : snd rest)
+  where
+    rest = listeZuPaar3 xs
+
 firsts :: [(a, b)] -> [a]
 firsts [] = []
 firsts ((a, _) : xs) = a : firsts xs
@@ -84,3 +94,9 @@ first (a, _) = a
 
 second :: (a, b) -> b
 second (_, b) = b
+
+filtery :: (a -> Bool) -> [a] -> [a]
+filtery _ [] = []
+filtery f (x : xs)
+  | f x = x : filtery f xs
+  | otherwise = filtery f xs
