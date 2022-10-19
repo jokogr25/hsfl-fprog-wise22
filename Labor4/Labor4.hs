@@ -76,3 +76,10 @@ fibIter' =
   let fibIter' akk1 akk2 0 = akk1
       fibIter' akk1 akk2 m = fibIter' akk2 (akk1 + akk2) (m - 1)
    in fibIter' 0 1
+   
+   
+fibIter'Seq :: Int -> Int
+fibIter'Seq =
+  let fibIter' akk1 akk2 0 = akk1
+      fibIter' akk1 akk2 m = seq (akk1 + akk2) (fibIter' akk2 (akk1 + akk2) (m - 1))
+   in fibIter' 0 1
