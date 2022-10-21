@@ -28,6 +28,7 @@ f x y z = x : y : z
 -- Aufgabe 2
 -- f1 0 3 ergibt 4
 -- f1 2 3 ergibt (2 * (3 + 3)) = 12
+f1 :: (Eq a, Num a) => a -> a -> a
 f1 0 x =
   let f2 x y = x + y
    in f2 x 1
@@ -35,9 +36,11 @@ f1 x y = x * f2 y
   where
     f2 x = x + y
 
+f_rek :: (Eq p, Num p) => p -> p
 f_rek 1 = 1
 f_rek n = (n * n) + f_rek (n -1)
 
+f_rekGuard :: (Eq p, Num p) => p -> p
 f_rekGuard n
   | n == 1 = 1
   | otherwise = (n * n) + f_rek (n -1)
@@ -55,10 +58,12 @@ f_iter' =
         | otherwise = f_iter'' (akk + m ^ 2) (m - 1)
    in f_iter'' 0
 
+fib :: (Eq a, Num a, Num p) => a -> p
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
 
+fibGuard :: (Eq a, Num a, Num p) => a -> p
 fibGuard n
   | n == 0 = 0
   | n == 1 = 1
@@ -76,8 +81,7 @@ fibIter' =
   let fibIter' akk1 akk2 0 = akk1
       fibIter' akk1 akk2 m = fibIter' akk2 (akk1 + akk2) (m - 1)
    in fibIter' 0 1
-   
-   
+
 fibIter'Seq :: Int -> Int
 fibIter'Seq =
   let fibIter' akk1 akk2 0 = akk1
