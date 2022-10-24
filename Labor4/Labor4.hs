@@ -47,8 +47,8 @@ f_rekGuard n
 
 f_iter :: Int -> Int
 f_iter =
-  let f_iter' akk 0 = akk
-      f_iter' akk n = f_iter' (akk + n ^ 2) (n - 1)
+  let f_iter' 0 akk = akk
+      f_iter' n akk = f_iter' (n - 1) (akk + n ^ 2)
    in f_iter' 0
 
 f_iter' :: Int -> Int
