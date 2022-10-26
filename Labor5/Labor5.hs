@@ -8,7 +8,7 @@ notenliste = [(1, 2.3), (2, 2.5), (3, 1.0)]
 notenlisteMean :: [(Integer, Double)] -> Double
 notenlisteMean l = notenlisteMean' l 0 0
   where
-    notenlisteMean' [] akk akkLength = akk / fromIntegral akkLength
+    notenlisteMean' [] akk akkLength = akk / akkLength
     notenlisteMean' ((_, note) : xs) akk akkLength = notenlisteMean' xs (akk + note) (akkLength + 1)
 
 gibmatnummern :: [(Integer, Double)] -> [Integer]
