@@ -44,24 +44,24 @@ notenliste = [(1, 2.3), (2, 2.5), (3, 1.0)]
 notenlisteMean :: [(Integer, Double)] -> Double
 notenlisteMean l = notenlisteMean' l 0 0
   where
-    notenlisteMean' [] akk akkLength = akk / akkLength
-    notenlisteMean' ((_, note) : xs) akk akkLength = notenlisteMean' xs (akk + note) (akkLength + 1)
+    notenlisteMean' [] notensumme laenge = notensumme / laenge
+    notenlisteMean' ((_, note) : xs) notensumme laenge = notenlisteMean' xs (notensumme + note) (laenge + 1)
 
 gibmatnummern :: [(Integer, Double)] -> [Integer]
 gibmatnummern l = gibmatnummern' l []
   where
-    gibmatnummern' [] akk = akk
-    gibmatnummern' ((matnr, 1.0) : xs) akk = gibmatnummern' xs (matnr : akk)
-    gibmatnummern' (_ : xs) akk = gibmatnummern' xs akk
+    gibmatnummern' [] matnummern = matnummern
+    gibmatnummern' ((matnr, 1.0) : xs) matnummern = gibmatnummern' xs (matnr : matnummern)
+    gibmatnummern' (_ : xs) matnummern = gibmatnummern' xs matnummern
 
+--
 gibmatnummern' :: [(Integer, Double)] -> [Integer]
 gibmatnummern' l =
   map
     fst
     ( filter
-        ( \(_, note) -> case note of
-            (1.0) -> True
-            _ -> False
+        ( \(_, note) ->
+            note == 1.0
         )
         l
     )
