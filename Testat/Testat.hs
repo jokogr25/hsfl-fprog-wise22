@@ -1,4 +1,4 @@
-module Labor6.Labor6 where
+module Testat.Testat where
 
 -- das Programm ist fehlerhaft, da durch das voranstellen von (==) die Präzedenz des "Operators" erhöht wird und dadurch die "Klammerung" geändert wird
 -- f x y = (==) [(1.3, 'a')] x ++ y
