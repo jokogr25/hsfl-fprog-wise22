@@ -1,6 +1,7 @@
 module Testat.Testat where
 
 -- das Programm ist fehlerhaft, da durch das voranstellen von (==) die Präzedenz des "Operators" erhöht wird und dadurch die "Klammerung" geändert wird
+-- richtige Antwort: ergebnis von == ist bool
 -- f x y = (==) [(1.3, 'a')] x ++ y
 
 g =
