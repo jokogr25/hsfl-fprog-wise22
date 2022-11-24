@@ -4,8 +4,8 @@
 module Labor6.Labor6 where
 
 -- Aufgabe 1
-mapWithFoldr :: (a -> b) -> [a] -> [b]
-mapWithFoldr f l = foldr (\x xs -> (f x) : xs) [] l
+-- mapWithFoldr :: (a -> b) -> [a] -> [b]
+-- mapWithFoldr f l = foldr (\x xs -> (f x) : xs) [] l
 
 -- Aufgabe 2
 take_While :: (Int -> Bool) -> [Int] -> [Int]
