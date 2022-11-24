@@ -35,3 +35,13 @@ wordToCamelCase (x : xs) =
       else x
   ) :
   map Data.Char.toLower xs
+
+-- Aufgabe 4
+pruefKlammern :: [Char] -> Bool
+pruefKlammern = pruefKlammern' 0
+  where
+    pruefKlammern' summeKlammern [] = summeKlammern == 0
+    pruefKlammern' summeKlammern (x : xs)
+      | x == '(' = pruefKlammern' (summeKlammern + 1) xs
+      | x == ')' = pruefKlammern' (summeKlammern - 1) xs
+      | otherwise = pruefKlammern' summeKlammern xs
