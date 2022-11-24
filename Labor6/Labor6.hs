@@ -24,7 +24,7 @@ take_WhileWithFoldr :: (Int -> Bool) -> [Int] -> [Int]
 take_WhileWithFoldr pred = foldr (\x xs -> if pred x then xs ++ [x] else []) []
 
 -- Aufgabe 3
-makeCamelCase :: [Char] -> String
+makeCamelCase :: [Char] -> [Char]
 makeCamelCase text = concatMap wordToCamelCase (words text)
 
 wordToCamelCase :: [Char] -> [Char]
