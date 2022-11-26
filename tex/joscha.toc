@@ -1,0 +1,2 @@
+\contentsline {section}{\numberline {1}Joschas erste Section in Tex}{2}{}%
+\contentsline {section}{\numberline {2}Hier ist noch eine section}{2}{}%
