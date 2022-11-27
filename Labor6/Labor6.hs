@@ -1,6 +1,5 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
-{-# HLINT ignore "Use camelCase" #-}
 module Labor6.Labor6 where
 
 import Data.Char (isLower, toLower, toUpper)
@@ -10,8 +9,8 @@ import Data.Char (isLower, toLower, toUpper)
 -- mapWithFoldr f l = foldr (\x xs -> (f x) : xs) [] l
 
 -- Aufgabe 2
-take_While :: (Int -> Bool) -> [Int] -> [Int]
-take_While pred l = take_While' [] pred l
+takeWhile :: (Int -> Bool) -> [Int] -> [Int]
+takeWhile pred l = take_While' [] pred l
   where
     take_While' :: [Int] -> (Int -> Bool) -> [Int] -> [Int]
     take_While' akk _ [] = akk
@@ -20,8 +19,8 @@ take_While pred l = take_While' [] pred l
         then take_While' (akk ++ [x]) pred xs
         else akk
 
-take_WhileWithFoldr :: (Int -> Bool) -> [Int] -> [Int]
-take_WhileWithFoldr pred = foldr (\x xs -> if pred x then xs ++ [x] else []) []
+takeWhileWithFoldr :: (Int -> Bool) -> [Int] -> [Int]
+takeWhileWithFoldr pred = foldr (\x xs -> if pred x then xs ++ [x] else []) []
 
 -- Aufgabe 3
 makeCamelCase :: [Char] -> [Char]
@@ -36,12 +35,22 @@ wordToCamelCase (x : xs) =
   ) :
   map Data.Char.toLower xs
 
+wordToCamelCaseFoldr :: [Char] -> [Char]
+wordToCamelCaseFoldr [] = ""
+wordToCamelCaseFoldr (x : xs) =
+  ( if Data.Char.isLower x
+      then Data.Char.toUpper x
+      else x
+  ) :
+  foldr (\x l -> Data.Char.toLower x : l) [] xs
+
 -- Aufgabe 4
 pruefKlammern :: [Char] -> Bool
 pruefKlammern = pruefKlammern' 0
   where
     pruefKlammern' summeKlammern [] = summeKlammern == 0
     pruefKlammern' summeKlammern (x : xs)
+      | x == ')' && summeKlammern == 0 = False
       | x == '(' = pruefKlammern' (summeKlammern + 1) xs
       | x == ')' = pruefKlammern' (summeKlammern - 1) xs
       | otherwise = pruefKlammern' summeKlammern xs
