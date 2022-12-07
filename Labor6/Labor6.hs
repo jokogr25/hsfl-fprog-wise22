@@ -24,16 +24,16 @@ takeWhileWithFoldr pred = foldr (\x xs -> if pred x then xs ++ [x] else []) []
 
 -- Aufgabe 3
 makeCamelCase :: [Char] -> [Char]
-makeCamelCase text = concatMap wordToCamelCase (words text)
+makeCamelCase text = concattiMappi wordToCamelCase (words text)
+
+concattiMappi :: (a -> [b]) -> [a] -> [b]
+concattiMappi _ [] = []
+concattiMappi f (x : xs) = f x ++ concattiMappi f xs
 
 wordToCamelCase :: [Char] -> [Char]
 wordToCamelCase [] = ""
 wordToCamelCase (x : xs) =
-  ( if Data.Char.isLower x
-      then Data.Char.toUpper x
-      else x
-  ) :
-  map Data.Char.toLower xs
+  Data.Char.toUpper x : map Data.Char.toLower xs
 
 wordToCamelCaseFoldr :: [Char] -> [Char]
 wordToCamelCaseFoldr [] = ""
