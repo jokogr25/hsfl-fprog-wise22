@@ -34,7 +34,7 @@ g'' x
 
 {-
 Aufgabe 2
-die Typvariable a wird als fractional definiert und damit sind nur Datentypen möglich, die in dieser Typklasse sind.
+die Typvariable a wird als fractional definiert und damit sind nur Datentypen möglich, die in dieser Typklasse sind; ebenfalls muss die Typklasse Ord angegeben werden, um für Fractionals den Operator > zu verwenden (um dies zu verkürzen ist der Einsatz der Klasse Real möglich)
 Daher kann der Aufruf von aufruf :: Int nicht funktionieren
 -}
 

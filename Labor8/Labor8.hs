@@ -1,3 +1,6 @@
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
+{-# HLINT ignore "Use newtype instead of data" #-}
 module Labor8.Labor8 where
 
 import Binary (Bin)
@@ -21,14 +24,15 @@ plus Zwei Eins = Drei
 -- Lösung: deriving (Eq)
 -- der Operator + ist nur verwendbar für Typen der Typklasse Num
 -- Lösung: statt des Operators die Funktion plus verwenden
-f :: [Zahl] -> Zahl -> Zahl
-f xs y = if xs == [] then y else x `plus` y
-  where
-    x :: Zahl
-    x = head xs
 
-data Tree
-  = BinaryTree
+-- f :: [Zahl] -> Zahl -> Zahl
+-- f xs y = if xs == [] then y else x + y
+--   where
+--     x :: Zahl
+--     x = head xs
+
+data Tree a
+  = BinaryTree (BinaryTree a)
 
 data BinaryTree a
   = Node a (BinaryTree a) (BinaryTree a)
